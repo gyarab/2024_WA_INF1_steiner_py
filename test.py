@@ -57,20 +57,20 @@ def is_prime(n):
             return False
     return True
 
-def primes_in_range(start, end):
+def PrimesRange(start, end):
     primes = []
     for num in range(start, end + 1):
         if is_prime(num):
             primes.append(num)
     return primes
 
-
 """
+print(PrimesRange(12, 13))
+
 print(is_prime(1))
 print(is_prime(2))
 print(is_prime(0))
 print(is_prime("a"))
-
 
 print(primes_in_range(0, 11))
 
