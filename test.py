@@ -31,7 +31,7 @@ print(CelesiusToFahrenheit(54))
 print(FahrenheitToCelsius(-80))
 """
 
-def celesius_to_fahrenheit(celsius):
+def celsius_to_fahrenheit(celsius):
     if not isinstance(celsius, (int, float)):
         return TypeError("Invalid input - Input must be an integer or float")
     if celsius < -273.15:
