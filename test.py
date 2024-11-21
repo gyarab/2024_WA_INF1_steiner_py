@@ -12,20 +12,20 @@ def fibonacciFirst(n):
 
 def fibonacci(n):
     p = fibonacciFirst(n)
-    print(p)
+    #print(p)
     if n == 0:
         return p[n]
-    if(n == 1):
+    else:
         return p[n-1]
     
 
-
+""""
 # Test the function
 n = 0  # Number of Fibonacci numbers to generate
 result = fibonacci(n)
 print(result)
 
-""""
+
 # Celsius to Fahrenheit
 print(CelesiusToFahrenheit(54))
 print(FahrenheitToCelsius(-80))
