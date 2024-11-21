@@ -1,7 +1,7 @@
 def fibonacci(n):
     if not isinstance(n, int):
         return TypeError("Invalid input - Input must be an integer")
-    if n <= 0:
+    if n < 0:
         return TypeError("Invalid input - Input must be a positive integer")
     sequence = [0, 1]  # Initialize the sequence with the first two numbers
     while len(sequence) < n:
@@ -10,9 +10,12 @@ def fibonacci(n):
     return sequence
 
 # Test the function
-n = -1  # Number of Fibonacci numbers to generate
+n = 15  # Number of Fibonacci numbers to generate
 result = fibonacci(n)
 print(result)
+
+
+"""
 
 print("Hello World")
 
@@ -30,3 +33,5 @@ print(bubblesort(arr))
 
 twoDimArray = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 print(twoDimArray[1][1])
+
+"""
