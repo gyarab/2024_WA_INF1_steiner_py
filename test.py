@@ -47,9 +47,9 @@ def fahrenheit_to_celsius(fahrenheit):
 
 def is_prime(n):
     if not isinstance(n, int):
-        return TypeError("Invalid input - Input must be an integer")
+        return TypeError("Invalid input")
     if n <= 0:
-        return ValueError("Invalid input - Input must be a positive integer")
+        return False
     if n < 2:
         return False
     for i in range(2, int(n**0.5) + 1):
@@ -57,12 +57,22 @@ def is_prime(n):
             return False
     return True
 
-"""
+
 print(is_prime(1))
 print(is_prime(2))
 print(is_prime(0))
 print(is_prime("a"))
 
+def primes_in_range(start, end):
+    primes = []
+    for num in range(start, end + 1):
+        if is_prime(num):
+            primes.append(num)
+    return primes
+
+
+"""
+print(primes_in_range(0, 11))
 
 print("Hello World")
 
