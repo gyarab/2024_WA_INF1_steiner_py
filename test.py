@@ -46,6 +46,10 @@ def fahrenheit_to_celsius(fahrenheit):
     return celsius
 
 def is_prime(n):
+    if(n < 0):
+        return ValueError("Invalid input - Input must be a positive integer")
+    if n == 0:
+        return ValueError("Invalid input - Input must be a positive integer")
     if not isinstance(n, int):
         return TypeError("Invalid input - Input must be an integer")
     if n < 2:
@@ -56,11 +60,12 @@ def is_prime(n):
     return True
 
 
-"""
 print(is_prime(1))
+print(is_prime(2))
+print(is_prime(0))
+print(is_prime("a"))
 
-
-
+"""
 print("Hello World")
 
 def bubblesort(arr):
