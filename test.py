@@ -1,4 +1,5 @@
-def fibonacci(n):
+def fibonacciFirst(n):
+    
     if not isinstance(n, int):
         return TypeError("Invalid input - Input must be an integer")
     if n < 0:
@@ -9,15 +10,28 @@ def fibonacci(n):
         sequence.append(next_number)  # Add the next number to the sequence
     return sequence
 
-"""
+def fibonacci(n):
+    p = fibonacciFirst(n)
+    print(p)
+    if n == 0:
+        return p[n]
+    if(n == 1):
+        return p[n-1]
+    
+
+
 # Test the function
-n = 15  # Number of Fibonacci numbers to generate
+n = 0  # Number of Fibonacci numbers to generate
 result = fibonacci(n)
 print(result)
+
+""""
+# Celsius to Fahrenheit
+print(CelesiusToFahrenheit(54))
+print(FahrenheitToCelsius(-80))
 """
 
-
-def CelesiusToFahrenheit(celsius):
+def celesius_to_fahrenheit(celsius):
     if not isinstance(celsius, (int, float)):
         return TypeError("Invalid input - Input must be an integer or float")
     if celsius < -273.15:
@@ -25,14 +39,12 @@ def CelesiusToFahrenheit(celsius):
     fahrenheit = celsius * 9/5 + 32
     return fahrenheit
 
-def FahrenheitToCelsius(fahrenheit):
+def fahrenheit_to_celsius(fahrenheit):
     if not isinstance(fahrenheit, (int, float)):
         return TypeError("Invalid input - Input must be an integer or float")
     celsius = (fahrenheit - 32) * 5/9
     return celsius
 
-print(CelesiusToFahrenheit(100))
-print(FahrenheitToCelsius(212))
 
 """
 
