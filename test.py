@@ -97,6 +97,7 @@ def split_into_threes(arr):
         result = [arr[i:i + 3] for i in range(0, len(arr), 3)]
     return result
 
+"""
 def vowels_and_consonants(s):
 
     if not isinstance(s, str):
@@ -107,15 +108,61 @@ def vowels_and_consonants(s):
         if char.isalpha():
             if char.lower() in 'aeiouáéíóúůý':
                 vowels += 1
-            if char.lower() in 'hchjklmnprstvzžščřcjďťň':
+            if char.lower() in 'hjklmnprstvzžščřcjďťň':
+                if char.lower() == "ch":
+                    consonants += 1
                 consonants += 1
     return {'vowels': vowels, 'consonants': consonants}
+    """
+
+def class_and_break_time(start_class, end_class):
+    h = 45
+    b = 0
+    if start_class == end_class == 0:
+        return 0, 0
+    if (start_class == 0):  
+        if(end_class == 1):
+            return 1*h, 5
+        if(end_class == 2):
+            return 2*h, 15
+        if(end_class == 3):
+            return 3*h, 35
+        if(end_class == 4):
+            return 4*h, 45
+        if(end_class == 5): 
+            return 5*h, 55
+        if(end_class == 6): 
+            return 6*h, 60
+        if(end_class == 7): 
+            return 7*h, 65
+        if(end_class == 8): 
+            return 8*h, 70
+
+def css_color_to_rgb(color):
+    if not isinstance(color, str):
+        raise ValueError("Invalid input - Input must be a string")
+    if color[0] == "#":
+        color = color[1:]
+    if color.startswith("rgb(") and color.endswith(")"):
+        color = color[4:-1]
+        r, g, b = color.split(",")
+        r = int(r.strip())
+        g = int(g.strip())
+        b = int(b.strip())
+        return r, g, b
+
+    if len(color) != 6:
+        raise ValueError("Invalid input - Input must be a string")
+    r = int(color[:2], 16)
+    g = int(color[2:4], 16)
+    b = int(color[4:], 16)
+    return r, g, b
 
 if __name__ == "__main__":
-    print(vowels_and_consonants("Ahoj světe!"))
-    print(vowels_and_consonants("123"))
-    print(vowels_and_consonants(""))
-    print(vowels_and_consonants(123))
+    print(css_color_to_rgb("#ffffff"))
+    print(css_color_to_rgb("#ff0000"))
+    print(css_color_to_rgb("rgb(255, 0, 0)"))
+
 """
 print(split_into_thress([1, 2, 3, 4, 5, 6, 7]))
 print(split_into_thress(123))
