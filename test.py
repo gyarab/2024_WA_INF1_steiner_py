@@ -81,14 +81,31 @@ def rottate_array(arr, n):
     n = n % len(arr)
     return arr[n:] + arr[:n]
 
+
+def split_into_thress(arr):
+    if arr is None:
+        raise ValueError("Invalid input - Array cannot be null")
+    if not isinstance(arr, list):
+        raise ValueError("Invalid input - Array must be a list")
+    if len(arr) % 3 != 0:
+        last_length = len(arr) % 3
+        last_array = arr[-last_length:]
+        arr = arr[:-last_length]
+        result = [arr[i:i + 3] for i in range(0, len(arr), 3)]
+        result.append(last_array)
+    else:
+        result = [arr[i:i + 3] for i in range(0, len(arr), 3)]
+    return result
+
+
+"""
+print(split_into_thress([1, 2, 3, 4, 5, 6, 7]))
+print(split_into_thress(123))
+print(primes_in_range(15, 9))
+
 print(rottate_array([1, 2, 3, 4, 5], 2))
 print(rottate_array([1, 2, 3, 4, 5], -1))
 print(rottate_array("is not an list", -1))
-
-"""
-
-print(primes_in_range(15, 9))
-
 
 
 print(is_prime(1))
