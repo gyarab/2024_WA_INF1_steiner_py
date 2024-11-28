@@ -105,11 +105,11 @@ def vowels_and_consonants(s):
     consonants = 0
     for char in s:
         if char.isalpha():
-            if char.lower() in 'aeiou':
+            if char.lower() in 'aeiouáéíóúůýAEIOUÁÉÍÓÚŮÝ':
                 vowels += 1
             else:
                 consonants += 1
-    return {'vowels': vowels, 'consonants': consonants}
+    return {'samohlásky': vowels, 'souhlásky': consonants}
 
 if __name__ == "__main__":
     print(vowels_and_consonants("Ahoj světe!"))
