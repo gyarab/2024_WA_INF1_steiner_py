@@ -98,6 +98,7 @@ def split_into_threes(arr):
     return result
 
 def vowels_and_consonants(s):
+
     if not isinstance(s, str):
         raise ValueError("Invalid input - Input must be a string")
     vowels = 0
@@ -108,7 +109,7 @@ def vowels_and_consonants(s):
                 vowels += 1
             else:
                 consonants += 1
-    return vowels, consonants
+    return {'vowels': vowels, 'consonants': consonants}
 
 if __name__ == "__main__":
     print(vowels_and_consonants("Ahoj světe!"))
