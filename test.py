@@ -58,14 +58,34 @@ def is_prime(n):
     return True
 
 def primes_in_range(start, end):
+    if start > end:
+        a = start
+        start = end
+        end = a
     primes = []
     for num in range(start, end + 1):
         if is_prime(num):
             primes.append(num)
     return primes
 
+def rottate_array(arr, n):
+    if not isinstance(arr, list):
+        raise ValueError('A very specific bad thing happened.')
+    if not isinstance(n, int):
+        raise ValueError('A very specific bad thing happened.')
+    if n < 0:
+        n = len(arr) - n
+    n = n % len(arr)
+    return arr[n:] + arr[:n]
+
+
+print(rottate_array(["not a list"], -1))
+
 """
-print(primes_in_range(12, 13))
+
+print(primes_in_range(15, 9))
+
+
 
 print(is_prime(1))
 print(is_prime(2))
@@ -92,3 +112,4 @@ twoDimArray = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 print(twoDimArray[1][1])
 
 """
+
