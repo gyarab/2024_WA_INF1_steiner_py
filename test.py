@@ -82,7 +82,7 @@ def rottate_array(arr, n):
     return arr[n:] + arr[:n]
 
 
-def split_into_thress(arr):
+def split_into_thres(arr):
     if arr is None:
         raise ValueError("Invalid input - Array cannot be null")
     if not isinstance(arr, list):
@@ -96,7 +96,6 @@ def split_into_thress(arr):
     else:
         result = [arr[i:i + 3] for i in range(0, len(arr), 3)]
     return result
-
 
 """
 print(split_into_thress([1, 2, 3, 4, 5, 6, 7]))
