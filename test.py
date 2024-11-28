@@ -105,9 +105,9 @@ def vowels_and_consonants(s):
     consonants = 0
     for char in s:
         if char.isalpha():
-            if char.lower() in 'aeiouáéíóúůýAEIOUÁÉÍÓÚŮÝ':
+            if char.lower() in 'aeiouáéíóúůý':
                 vowels += 1
-            else:
+            if char.lower() in 'hchjklmnprstvzžščřcjďťň':
                 consonants += 1
     return {'vowels': vowels, 'consonants': consonants}
 
