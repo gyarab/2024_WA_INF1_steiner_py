@@ -82,7 +82,7 @@ def rottate_array(arr, n):
     return arr[n:] + arr[:n]
 
 
-def split_into_thres(arr):
+def split_into_threes(arr):
     if arr is None:
         raise ValueError("Invalid input - Array cannot be null")
     if not isinstance(arr, list):
@@ -97,6 +97,24 @@ def split_into_thres(arr):
         result = [arr[i:i + 3] for i in range(0, len(arr), 3)]
     return result
 
+def vowels_and_consonants(s):
+    if not isinstance(s, str):
+        raise ValueError("Invalid input - Input must be a string")
+    vowels = 0
+    consonants = 0
+    for char in s:
+        if char.isalpha():
+            if char.lower() in 'aeiou':
+                vowels += 1
+            else:
+                consonants += 1
+    return vowels, consonants
+
+if __name__ == "__main__":
+    print(vowels_and_consonants("Ahoj světe!"))
+    print(vowels_and_consonants("123"))
+    print(vowels_and_consonants(""))
+    print(vowels_and_consonants(123))
 """
 print(split_into_thress([1, 2, 3, 4, 5, 6, 7]))
 print(split_into_thress(123))
