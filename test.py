@@ -69,8 +69,11 @@ def primes_in_range(start, end):
     return primes
 
 def rottate_array(arr, n):
+    if arr is None:
+        raise ValueError("Invalid input - Array cannot be null")
+    
     if not isinstance(arr, list):
-        raise ValueError('A very specific bad thing happened.')
+        raise ValueError("Invalid input - Array must be a list")
     if not isinstance(n, int):
         raise ValueError('A very specific bad thing happened.')
     if n < 0:
@@ -78,8 +81,9 @@ def rottate_array(arr, n):
     n = n % len(arr)
     return arr[n:] + arr[:n]
 
-
-print(rottate_array(["not a list"], -1))
+print(rottate_array([1, 2, 3, 4, 5], 2))
+print(rottate_array([1, 2, 3, 4, 5], -1))
+print(rottate_array("is not an list", -1))
 
 """
 
