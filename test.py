@@ -109,7 +109,7 @@ def vowels_and_consonants(s):
                 vowels += 1
             else:
                 consonants += 1
-    return {'samohlásky': vowels, 'souhlásky': consonants}
+    return {'vowels': vowels, 'consonants': consonants}
 
 if __name__ == "__main__":
     print(vowels_and_consonants("Ahoj světe!"))
