@@ -1,3 +1,7 @@
+import csv
+import os
+
+
 def fibonacciFirst(n):
     
     if not isinstance(n, int):
@@ -115,53 +119,87 @@ def vowels_and_consonants(s):
     return {'vowels': vowels, 'consonants': consonants}
     """
 
-def class_and_break_time(start_class, end_class):
-    h = 45
-    b = 0
-    if start_class == end_class == 0:
-        return 0, 0
-    if (start_class == 0):  
-        if(end_class == 1):
-            return 1*h, 5
-        if(end_class == 2):
-            return 2*h, 15
-        if(end_class == 3):
-            return 3*h, 35
-        if(end_class == 4):
-            return 4*h, 45
-        if(end_class == 5): 
-            return 5*h, 55
-        if(end_class == 6): 
-            return 6*h, 60
-        if(end_class == 7): 
-            return 7*h, 65
-        if(end_class == 8): 
-            return 8*h, 70
-
 def css_color_to_rgb(color):
-    if not isinstance(color, str):
-        raise ValueError("Invalid input - Input must be a string")
-    if color[0] == "#":
-        color = color[1:]
-    if color.startswith("rgb(") and color.endswith(")"):
-        color = color[4:-1]
-        r, g, b = color.split(",")
-        r = int(r.strip())
-        g = int(g.strip())
-        b = int(b.strip())
-        return r, g, b
+    color = color.strip()
+    
+    if color.startswith("#"):
+        if len(color) == 7:
+            r = int(color[1:3], 16)
+            g = int(color[3:5], 16)
+            b = int(color[5:7], 16)
+            print(f"({r}, {g}, {b})") 
+            return (r, g, b)
+        elif len(color) == 4:
+            r = int(color[1]*2, 16)
+            g = int(color[2]*2, 16)
+            b = int(color[3]*2, 16)
+            print(f"({r}, {g}, {b})") 
+            return (r, g, b)
+        else:
+            raise ValueError("Invalid hex color format")
+    
+    elif color.startswith("rgb"):
+        color = color[color.index("(")+1:color.index(")")]
+        parts = color.split(",")
+        if len(parts) != 3:
+            raise ValueError("Invalid rgb color format")
+        r = int(parts[0].strip())
+        g = int(parts[1].strip())
+        b = int(parts[2].strip())
+        print(f"({r}, {g}, {b})") 
+        return (r, g, b)
+    
+    elif color.startswith("hsl"):
+        color = color[color.index("(")+1:color.index(")")]
+        parts = color.split(",")
+        if len(parts) != 3:
+            raise ValueError("Invalid hsl color format")
+        h = int(parts[0].strip())
+        s = int(parts[1].strip().strip('%')) / 100.0
+        l = int(parts[2].strip().strip('%')) / 100.0
+        c = (1 - abs(2 * l - 1)) * s
+        x = c * (1 - abs((h / 60.0) % 2 - 1))
+        m = l - c / 2
+        if 0 <= h < 60:
+            r, g, b = c, x, 0
+        elif 60 <= h < 120:
+            r, g, b = x, c, 0
+        elif 120 <= h < 180:
+            r, g, b = 0, c, x
+        elif 180 <= h < 240:
+            r, g, b = 0, x, c
+        elif 240 <= h < 300:
+            r, g, b = x, 0, c
+        elif 300 <= h < 360:
+            r, g, b = c, 0, x
+        else:
+            raise ValueError("Invalid hsl color format")
+        r = int((r + m) * 255)
+        g = int((g + m) * 255)
+        b = int((b + m) * 255)
+        print(f"({r}, {g}, {b})") 
+        return (r, g, b)
+    
+    else:
 
-    if len(color) != 6:
-        raise ValueError("Invalid input - Input must be a string")
-    r = int(color[:2], 16)
-    g = int(color[2:4], 16)
-    b = int(color[4:], 16)
-    return r, g, b
+        file_path = os.path.join(os.path.dirname(__file__), 'cssNamedColors.csv')
+        with open(file_path, mode='r') as file:
+            reader = csv.reader(file)
+            next(reader)  # Skip the header
+            for row in reader:
+                if row[1].strip().lower() == color.lower():
+                    hex_value = row[2].strip()
+                    return css_color_to_rgb(hex_value)
+        raise ValueError("Unsupported color format")
+
 
 if __name__ == "__main__":
-    print(css_color_to_rgb("#ffffff"))
-    print(css_color_to_rgb("#ff0000"))
-    print(css_color_to_rgb("rgb(255, 0, 0)"))
+    css_color_to_rgb("#ff0000") # (255, 0, 0)
+    css_color_to_rgb("rgb(0, 255, 0)") # (0, 255, 0)
+    css_color_to_rgb("rgb(255, 0, 0)") # (255, 0, 0)
+    css_color_to_rgb("blue") # (0, 0, 255)
+    css_color_to_rgb("red") # (0, 0, 255)
+    css_color_to_rgb("invalid-color") # raises ValueError
 
 """
 print(split_into_thress([1, 2, 3, 4, 5, 6, 7]))
